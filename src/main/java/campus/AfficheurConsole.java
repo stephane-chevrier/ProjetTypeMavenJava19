@@ -14,33 +14,31 @@ public class AfficheurConsole implements Afficheur {
     /**
      * Creation objets
      */
-    private final Scanner clavier = new Scanner(System.in);
+//    private final Scanner clavier = new Scanner(System.in);
 
     /**
      * Initialisation des constantes des messages
      */
     private static final String
             MESSAGE_BIENVENUE = "Bienvenue sur le jeu 'Devinez mon numéro'",
+            MESSAGE_MENU = "Menu :",
             MESSAGE_FAITES_VOTRE_CHOIX = "Entrez votre choix : ",
             MESSAGE_FIN = "Merci d'être venu, à bientôt !!!",
-            MESSAGE_SAISIE_INVALIDE = "Votre saisie n'est pas correcte, recommencez.";
+            MESSAGE_SAISIE_INVALIDE = "Votre saisie n'est pas correcte, recommencez.",
+            MESSAGE_PARAMETRES_TEXTE1 = "Les parametres actuels sont : ",
+            MESSAGE_PARAMETRES_TEXTE2 = "Saisissez la nouvelle ",
+            MESSAGE_PARAMETRES_MINI = "Valeur minium : ",
+            MESSAGE_PARAMETRES_MAXI = "Valeur maximum : ";
 
-    /**
-     * initialisation des constantes generales
-     */
-    public final boolean
-            AVEC_SAUT = true,
-            SANS_SAUT = false;
+    public final String
+            ESPACE = " ",
+            TAB = ESPACE.repeat(2);
 
     /**
      * methodes d'affichage sur la console
      */
-    public void afficherMessage(String texte, boolean saut) {
-        if (saut) {
-            afficherMessageAvecSaut(texte);
-        } else {
-            System.out.print(texte);
-        }
+    public void afficherMessageSansSaut(String texte) {
+        System.out.print(texte);
     }
 
     public void afficherMessageAvecSaut(String texte) {
@@ -48,25 +46,57 @@ public class AfficheurConsole implements Afficheur {
     }
 
     public void afficherBienvenue() {
-        afficherMessage(MESSAGE_BIENVENUE, AVEC_SAUT);
+        afficherMessageAvecSaut("");
+        afficherMessageAvecSaut(MESSAGE_BIENVENUE);
+    }
+
+    public void afficherMenu() {
+        afficherMessageAvecSaut("");
+        afficherMessageAvecSaut(MESSAGE_MENU);
     }
 
     public void afficherFinDuJeu() {
-        afficherMessage(MESSAGE_FIN, AVEC_SAUT);
+        afficherMessageAvecSaut(MESSAGE_FIN);
     }
 
     public void afficherSaisieInvalide() {
-        afficherMessage(MESSAGE_SAISIE_INVALIDE, AVEC_SAUT);
+        afficherMessageAvecSaut(MESSAGE_SAISIE_INVALIDE);
+    }
+
+    public void afficherParametres(int mini, int maxi) {
+        afficherMessageAvecSaut("");
+        afficherMessageAvecSaut(MESSAGE_PARAMETRES_TEXTE1);
+        afficherMessageAvecSaut(TAB + MESSAGE_PARAMETRES_MINI + mini);
+        afficherMessageAvecSaut(TAB + MESSAGE_PARAMETRES_MAXI + maxi);
     }
 
     /**
      * methodes de daisie au clavier
      */
     public String saisieTexte(String message) {
-        afficherMessage(message, SANS_SAUT);
+        Scanner clavier = new Scanner(System.in);
+        afficherMessageSansSaut(message);
         return clavier.nextLine();
     }
 
+    public int saisieEntier(String message) {
+        Scanner clavier = new Scanner(System.in);
+        afficherMessageSansSaut(message);
+        try {
+            return clavier.nextInt();
+        } catch (Exception e) {
+            afficherSaisieInvalide();
+            return saisieEntier(message);
+        }
+    }
+
+    public int SaisieMini() {
+        return saisieEntier( MESSAGE_PARAMETRES_TEXTE2+MESSAGE_PARAMETRES_MINI);
+    }
+
+    public int SaisieMaxi() {
+        return saisieEntier( MESSAGE_PARAMETRES_TEXTE2+MESSAGE_PARAMETRES_MAXI);
+    }
     public String faitesVotreChoix() {
         return saisieTexte(MESSAGE_FAITES_VOTRE_CHOIX);
     }

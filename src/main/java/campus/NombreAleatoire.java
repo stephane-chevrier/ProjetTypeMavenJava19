@@ -10,12 +10,14 @@ import java.util.Random;
  * @Date 2023-03-22
  *
  **/
-public class Modele {
+public class NombreAleatoire {
 
     /**
      * Variables d'instance
      */
-    private int NombreATrouver;
+    int NombreATrouver;
+
+    private
 
 
     /**
@@ -23,7 +25,7 @@ public class Modele {
      * @param entierMini Entier mini
      * @param entierMaxi Entier maxi
      */
-    public Modele(int entierMini, int entierMaxi) {
+    NombreAleatoire(int entierMini, int entierMaxi) {
         Random entierAleatoire = new SecureRandom();
         this.NombreATrouver = entierAleatoire.nextInt(entierMaxi-entierMini+1)+entierMini;
     }

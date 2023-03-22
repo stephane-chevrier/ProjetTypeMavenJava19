@@ -9,13 +9,16 @@ package campus;
  **/
 public interface Afficheur {
 
-    void afficherMessage(String texte, boolean saut);
+    void afficherMessageSansSaut(String texte);
     void afficherMessageAvecSaut(String texte);
-    String saisieTexte(String message);
-
     void afficherBienvenue();
+    void afficherMenu();
     void afficherFinDuJeu();
     void afficherSaisieInvalide();
-
+    void afficherParametres(int mini, int maxi);
+    String saisieTexte(String message);
+    int saisieEntier(String message);
+    int SaisieMini();
+    int SaisieMaxi();
     String faitesVotreChoix();
 }

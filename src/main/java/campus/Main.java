@@ -2,7 +2,7 @@ package campus;
 
 public class Main {
     public static void main(String[] args) {
-        Lanceur lanceur = new Lanceur();
-        lanceur.lancementJeu();
+        Controleur controleur = new Controleur();
+        controleur.lancementJeu();
     }
 }
