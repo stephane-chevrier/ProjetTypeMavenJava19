@@ -57,6 +57,7 @@ public class Controleur {
                 switch (choixMenu.valueOf(saisie.toUpperCase())) {
 
                     case JOUER -> {
+                        jouer();
                     }
 
                     case PARAMETRES -> {
@@ -79,9 +80,47 @@ public class Controleur {
 
     }
 
+    /**
+     * Methode pour definir le mini et le maxi des valeurs cibles
+     */
     private void definirParametres() {
         afficheur.afficherParametres(parametres.getEntierMini(), parametres.getEntierMaxi());
-        parametres.setEntierMini(afficheur.SaisieMini());
-        parametres.setEntierMaxi(afficheur.SaisieMaxi());
+        parametres.setEntierMini(afficheur.saisieMini());
+        do {
+            parametres.setEntierMaxi(afficheur.saisieMaxi());
+            if (parametres.getEntierMaxi() < parametres.getEntierMini()) {
+                afficheur.afficherSaisieInvalide();
+            }
+        }
+        while (parametres.getEntierMaxi() < parametres.getEntierMini());
+
+    }
+
+    private void jouer() {
+        // initialisation des variables locales
+        int valeur;
+        int compteur = 0;
+        boolean gagne = false;
+        NombreAleatoire aDeviner = new NombreAleatoire(parametres.getEntierMini(), parametres.getEntierMaxi());
+        afficheur.afficherNombreChoisi();
+        do {
+            valeur = afficheur.entrezValeur();
+            if (valeur == -9999) {
+                gagne = true;
+            }
+            compteur++;
+            if (valeur > aDeviner.nombre) {
+                afficheur.afficherTropPetit(valeur);
+            } else if (valeur < aDeviner.nombre) {
+                afficheur.afficherTropGrand(valeur);
+            } else {
+                afficheur.afficherGagne(compteur);
+                gagne = true;
+            }
+        }
+        while (!gagne);
+        if (valeur != aDeviner.nombre) {
+            afficheur.afficherPerdu(compteur-1);
+        }
     }
 }

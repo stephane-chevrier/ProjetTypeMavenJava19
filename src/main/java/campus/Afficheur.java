@@ -16,9 +16,15 @@ public interface Afficheur {
     void afficherFinDuJeu();
     void afficherSaisieInvalide();
     void afficherParametres(int mini, int maxi);
+    void afficherTropPetit(int valeur);
+    void afficherTropGrand(int valeur);
+    void afficherNombreChoisi();
+    void afficherGagne(int nombreCoups);
+    void afficherPerdu(int nombreCoups);
     String saisieTexte(String message);
     int saisieEntier(String message);
-    int SaisieMini();
-    int SaisieMaxi();
+    int saisieMini();
+    int saisieMaxi();
     String faitesVotreChoix();
+    int entrezValeur();
 }

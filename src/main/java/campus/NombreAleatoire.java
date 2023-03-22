@@ -15,18 +15,15 @@ public class NombreAleatoire {
     /**
      * Variables d'instance
      */
-    int NombreATrouver;
-
-    private
-
+    int nombre;
 
     /**
      * Constructeurs
      * @param entierMini Entier mini
      * @param entierMaxi Entier maxi
      */
-    NombreAleatoire(int entierMini, int entierMaxi) {
+    public NombreAleatoire(int entierMini, int entierMaxi) {
         Random entierAleatoire = new SecureRandom();
-        this.NombreATrouver = entierAleatoire.nextInt(entierMaxi-entierMini+1)+entierMini;
+        this.nombre = entierAleatoire.nextInt(entierMaxi-entierMini+1)+entierMini;
     }
 }
