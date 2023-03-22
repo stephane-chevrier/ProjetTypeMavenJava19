@@ -1,5 +1,6 @@
-package campus;
+package campus.viewer;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -27,7 +28,7 @@ public class AfficheurConsole implements Afficheur {
             MESSAGE_SAISIE_INVALIDE = "Votre saisie n'est pas correcte, recommencez.",
             MESSAGE_PARAMETRES_TEXTE1 = "Les paramètres actuels sont : ",
             MESSAGE_PARAMETRES_TEXTE2 = "Saisissez la nouvelle ",
-            MESSAGE_PARAMETRES_MINI = "Valeur minium : ",
+            MESSAGE_PARAMETRES_MINI = "Valeur minimum : ",
             MESSAGE_PARAMETRES_MAXI = "Valeur maximum : ",
             MESSAGE_NOMBRE_CHOISI = "J'ai choisi le nombre à devinez, essayer de le trouver !",
             MESSAGE_ENTRER_VALEUR = "Entrez une valeur (-9999 pour quitter le jeu) : ",
@@ -112,11 +113,16 @@ public class AfficheurConsole implements Afficheur {
             int saisie = clavier.nextInt();
             clavier.nextLine();
             return saisie;
-        } catch (Exception e) {
+        }
+        catch (NoSuchElementException | IllegalStateException e) {
             afficherSaisieInvalide();
             clavier.nextLine();
+//            throw new MonExceptionCustom();
             return saisieEntier(message);
         }
+//        catch (Exception e) {
+//
+//        }
     }
 
     public int saisieMini() {

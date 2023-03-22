@@ -1,6 +1,6 @@
-Projet type Java 19 / Maven
+## ** Projet type Java 19 / Maven **
 
-DESCRIPTION
+## ** DESCRIPTION **
 Projet réalisé dans le cadre du module "Bonnes pratiques" / Kit 7
 Il s'agit de disposer d’un projet type java sans framework configuré pour
 - travailler en équipe
@@ -10,11 +10,11 @@ Il s'agit de disposer d’un projet type java sans framework configuré pour
 La fonctionnalité implémentée est "Devinez mon numéro"
 
 
-INSTALLATION ET EXECUTION
+## ** INSTALLATION ET EXECUTION **
 /
 
 
-UTILISATION
+## ** UTILISATION **
 Il s'agit de deviner un entier aléatoire en indiquant à chaque saisie si on est au-dessus ou en-dessous du nombre à deviner.
 Menu principal :
 - jouer
@@ -22,15 +22,11 @@ Menu principal :
 - quitter --> quitter le jeu
 
 
-EQUIPE
+## ** EQUIPE **
 Auteur : Stéphane CHEVRIER
 GitHub : https://github.com/stephane-chevrier
 Linkedin : www.linkedin.com/in/chevrier-38z
 
-
-LICENCE
-Licence logicielle Boost 1.0
-https://choosealicense.com/licenses/bsl-1.0/
 
 
 

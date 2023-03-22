@@ -1,4 +1,4 @@
-package campus;
+package campus.model;
 
 import java.security.SecureRandom;
 import java.util.Random;
@@ -25,5 +25,13 @@ public class NombreAleatoire {
     public NombreAleatoire(int entierMini, int entierMaxi) {
         Random entierAleatoire = new SecureRandom();
         this.nombre = entierAleatoire.nextInt(entierMaxi-entierMini+1)+entierMini;
+    }
+
+    public int getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(int nombre) {
+        this.nombre = nombre;
     }
 }

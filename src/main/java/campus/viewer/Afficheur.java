@@ -1,4 +1,4 @@
-package campus;
+package campus.viewer;
 
 /**
  * Interface Viewer Pattern MVC

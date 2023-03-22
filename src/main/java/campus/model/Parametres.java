@@ -1,4 +1,4 @@
-package campus;
+package campus.model;
 
 public class Parametres {
         private int entierMini;

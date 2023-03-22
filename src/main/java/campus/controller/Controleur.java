@@ -1,4 +1,9 @@
-package campus;
+package campus.controller;
+
+import campus.model.NombreAleatoire;
+import campus.model.Parametres;
+import campus.viewer.Afficheur;
+import campus.viewer.AfficheurConsole;
 
 /**
  * Controleur-Lanceur du Design Pattern MVC
@@ -103,15 +108,17 @@ public class Controleur {
         boolean gagne = false;
         NombreAleatoire aDeviner = new NombreAleatoire(parametres.getEntierMini(), parametres.getEntierMaxi());
         afficheur.afficherNombreChoisi();
+        // boucle de saisie
         do {
             valeur = afficheur.entrezValeur();
+
             if (valeur == -9999) {
                 gagne = true;
             }
             compteur++;
-            if (valeur > aDeviner.nombre) {
+            if (valeur > aDeviner.getNombre()) {
                 afficheur.afficherTropPetit(valeur);
-            } else if (valeur < aDeviner.nombre) {
+            } else if (valeur < aDeviner.getNombre()) {
                 afficheur.afficherTropGrand(valeur);
             } else {
                 afficheur.afficherGagne(compteur);
@@ -119,7 +126,7 @@ public class Controleur {
             }
         }
         while (!gagne);
-        if (valeur != aDeviner.nombre) {
+        if (valeur != aDeviner.getNombre()) {
             afficheur.afficherPerdu(compteur-1);
         }
     }
